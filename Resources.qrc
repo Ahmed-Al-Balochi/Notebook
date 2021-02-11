@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/Images">
+        <file>Images/Icons/Icons/Open.bmp</file>
+        <file>Images/Icons/Icons/Paste.bmp</file>
+        <file>Images/Icons/Icons/Save.bmp</file>
+        <file>Images/Icons/Icons/Copy.bmp</file>
+        <file>Images/Icons/Icons/Cut.bmp</file>
+        <file>Images/Icons/Icons/DeleteSticky.bmp</file>
+        <file>Images/Icons/Icons/New.bmp</file>
+        <file>Images/Icons/Icons/Turtle.png</file>
+        <file>Images/Icons/Icons/external-content.duckduckgo.com.jpg</file>
+        <file>Images/Icons/Icons/undo.jpg</file>
+        <file>Images/Icons/Icons/exit.png</file>
+        <file>Images/Icons/Icons/redo.jpg</file>
+    </qresource>
+</RCC>
