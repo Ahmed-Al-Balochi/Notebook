@@ -8,12 +8,11 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     //this->setCentralWidget(ui->textEdit);
+    path();
+    QDate datetime = QDate::currentDate(); //works ok
+    ui->textEdit->setText("Date: " + datetime.toString());
+    ui->textEdit->append("Subject: ");
 
-    QString sPath = "/";
-    filemodel = new QFileSystemModel(this);
-    filemodel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs |QDir::Files);
-    filemodel->setRootPath(sPath);
-    ui->treeView->setModel(filemodel);
 }
 
 MainWindow::~MainWindow()

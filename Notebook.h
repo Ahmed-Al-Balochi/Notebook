@@ -3,9 +3,10 @@
 
 #include <QMainWindow>
 #include <QFile>
- #include <QFileSystemModel>
+#include <QFileSystemModel>
 #include <QtGui>
 #include <QDialog>
+#include<QTreeView>
 #include <QtCore>
 #include <QFileDialog>
 #include <QTextStream>
@@ -59,6 +60,7 @@ private slots:
     void NewFile();
     void OpenFile();
     void Print();
+    void path();
 
 private:
     Ui::MainWindow *ui;

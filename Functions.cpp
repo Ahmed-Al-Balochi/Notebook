@@ -87,5 +87,11 @@ void MainWindow::closeEvent(QCloseEvent *event)
         return true;
     }
 
-
-
+    void MainWindow::path(){
+        QString sPath = QDir::homePath();
+        filemodel = new QFileSystemModel(this);
+        filemodel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs |QDir::Files); // make an option to backtrack
+        filemodel->setRootPath(sPath);
+        ui->treeView->setModel(filemodel);
+        ui->treeView->setRootIndex(filemodel->index((sPath)));
+    }
