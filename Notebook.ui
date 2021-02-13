@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>NoteBook</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="Resources.qrc">
+    <normaloff>:/Images/Images/Icons/Icons/notes.png</normaloff>:/Images/Images/Icons/Icons/notes.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(136, 136, 136);
@@ -92,7 +96,6 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
     <addaction name="actionPrint"/>
-    <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
@@ -104,8 +107,15 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionUndo"/>
     <addaction name="actionRedo"/>
    </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -127,7 +137,6 @@ p, li { white-space: pre-wrap; }
    <addaction name="actionCut"/>
    <addaction name="actionPaste"/>
    <addaction name="actionPrint"/>
-   <addaction name="actionExit"/>
   </widget>
   <widget class="QToolBar" name="toolBar_2">
    <property name="windowTitle">
@@ -143,7 +152,7 @@ p, li { white-space: pre-wrap; }
   <action name="actionNew">
    <property name="icon">
     <iconset resource="Resources.qrc">
-     <normaloff>:/Images/Images/Icons/Icons/New.bmp</normaloff>:/Images/Images/Icons/Icons/New.bmp</iconset>
+     <normaloff>:/Images/Images/Icons/Icons/new.png</normaloff>:/Images/Images/Icons/Icons/new.png</iconset>
    </property>
    <property name="text">
     <string>New</string>
@@ -152,7 +161,7 @@ p, li { white-space: pre-wrap; }
   <action name="actionOpen">
    <property name="icon">
     <iconset resource="Resources.qrc">
-     <normaloff>:/Images/Images/Icons/Icons/Open.bmp</normaloff>:/Images/Images/Icons/Icons/Open.bmp</iconset>
+     <normaloff>:/Images/Images/Icons/Icons/open.png</normaloff>:/Images/Images/Icons/Icons/open.png</iconset>
    </property>
    <property name="text">
     <string>Open</string>
@@ -161,7 +170,7 @@ p, li { white-space: pre-wrap; }
   <action name="actionSave">
    <property name="icon">
     <iconset resource="Resources.qrc">
-     <normaloff>:/Images/Images/Icons/Icons/Save.bmp</normaloff>:/Images/Images/Icons/Icons/Save.bmp</iconset>
+     <normaloff>:/Images/Images/Icons/Icons/save-file.png</normaloff>:/Images/Images/Icons/Icons/save-file.png</iconset>
    </property>
    <property name="text">
     <string>Save</string>
@@ -170,26 +179,16 @@ p, li { white-space: pre-wrap; }
   <action name="actionPrint">
    <property name="icon">
     <iconset resource="Resources.qrc">
-     <normaloff>:/Images/Images/Icons/Icons/external-content.duckduckgo.com.jpg</normaloff>:/Images/Images/Icons/Icons/external-content.duckduckgo.com.jpg</iconset>
+     <normaloff>:/Images/Images/Icons/Icons/printer.png</normaloff>:/Images/Images/Icons/Icons/printer.png</iconset>
    </property>
    <property name="text">
     <string>Print</string>
    </property>
   </action>
-  <action name="actionExit">
-   <property name="icon">
-    <iconset>
-     <normalon>:/Images/Images/Icons/Icons/exit.png</normalon>
-    </iconset>
-   </property>
-   <property name="text">
-    <string>Exit</string>
-   </property>
-  </action>
   <action name="actionCopy">
    <property name="icon">
     <iconset resource="Resources.qrc">
-     <normaloff>:/Images/Images/Icons/Icons/Copy.bmp</normaloff>:/Images/Images/Icons/Icons/Copy.bmp</iconset>
+     <normaloff>:/Images/Images/Icons/Icons/copy.png</normaloff>:/Images/Images/Icons/Icons/copy.png</iconset>
    </property>
    <property name="text">
     <string>Copy</string>
@@ -198,7 +197,7 @@ p, li { white-space: pre-wrap; }
   <action name="actionPaste">
    <property name="icon">
     <iconset resource="Resources.qrc">
-     <normaloff>:/Images/Images/Icons/Icons/Paste.bmp</normaloff>:/Images/Images/Icons/Icons/Paste.bmp</iconset>
+     <normaloff>:/Images/Images/Icons/Icons/clipboard-paste-option.png</normaloff>:/Images/Images/Icons/Icons/clipboard-paste-option.png</iconset>
    </property>
    <property name="text">
     <string>Paste</string>
@@ -206,8 +205,9 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionCut">
    <property name="icon">
-    <iconset resource="Resources.qrc">
-     <normaloff>:/Images/Images/Icons/Icons/Cut.bmp</normaloff>:/Images/Images/Icons/Icons/Cut.bmp</iconset>
+    <iconset>
+     <normaloff>:/Images/Images/Icons/Icons/Cut.bmp</normaloff>
+     <normalon>:/Images/Images/Icons/Icons/scissors.png</normalon>:/Images/Images/Icons/Icons/Cut.bmp</iconset>
    </property>
    <property name="text">
     <string>Cut</string>
@@ -215,9 +215,9 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionUndo">
    <property name="icon">
-    <iconset>
-     <normalon>:/Images/Images/Icons/Icons/undo.jpg</normalon>
-    </iconset>
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Images/Images/Icons/Icons/left-arrow.png</normaloff>
+     <normalon>:/Images/Images/Icons/Icons/undo.jpg</normalon>:/Images/Images/Icons/Icons/left-arrow.png</iconset>
    </property>
    <property name="text">
     <string>Undo</string>
@@ -225,12 +225,22 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="actionRedo">
    <property name="icon">
-    <iconset resource="Resources.qrc">
+    <iconset>
      <normaloff>:/Images/Images/Icons/Icons/redo.jpg</normaloff>
-     <normalon>:/Images/Images/Icons/Icons/redo.png</normalon>:/Images/Images/Icons/Icons/redo.jpg</iconset>
+     <normalon>:/Images/Images/Icons/Icons/right-arrow.png</normalon>:/Images/Images/Icons/Icons/redo.jpg</iconset>
    </property>
    <property name="text">
     <string>Redo</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Images/Images/Icons/Icons/notes.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>About</string>
    </property>
   </action>
  </widget>

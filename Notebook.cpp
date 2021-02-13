@@ -92,3 +92,10 @@ void MainWindow::on_treeView_clicked(const QModelIndex &index)
     file.close();
     }
 }
+
+void MainWindow::on_actionAbout_triggered()
+{
+    QMessageBox::about(this, "About Notebook"," Thank You for Using my Notebook App!\n Author: Ahmed Al Balochi\n Student of Computer Science at Riphah International University"
+                                       "\n Email: a7mad98.work@gmail.com\n Github Page Link: https://github.com/Ahmed-Al-Balochi");
+}
+

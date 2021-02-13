@@ -62,6 +62,8 @@ private slots:
     void Print();
     void path();
 
+    void on_actionAbout_triggered();
+
 private:
     Ui::MainWindow *ui;
     MainWindow *w;
