@@ -8,6 +8,7 @@
 #include <QDialog>
 #include<QTreeView>
 #include <QtCore>
+#include<QWidget>
 #include <QFileDialog>
 #include <QTextStream>
 #include <QMessageBox>
@@ -23,6 +24,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    //explicit MainWindow(const QString &fileName, QWidget *parent = nullptr);
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
@@ -61,8 +63,13 @@ private slots:
     void OpenFile();
     void Print();
     void path();
+    void startup();
 
     void on_actionAbout_triggered();
+
+    void on_tabWidget_tabCloseRequested(int index);
+
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;

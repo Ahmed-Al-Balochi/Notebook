@@ -1,11 +1,4 @@
-#include "Notebook.h"
-#include "ui_Notebook.h"
-
-void MainWindow::startup(){
-QDate datetime = QDate::currentDate(); //works ok
-ui->textEdit->setText("Date: " + datetime.toString());
-ui->textEdit->append("Subject: ");
-}
+#include<Notebook.h>
 
 void MainWindow::save(){
     QString filename = QFileDialog::getSaveFileName(this, "Save as");

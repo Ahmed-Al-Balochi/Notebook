@@ -1,6 +1,6 @@
 #include "Notebook.h"
 #include "ui_Notebook.h"
-//#include "Functions.cpp"
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -9,9 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     //this->setCentralWidget(ui->textEdit);
     path();
-    QDate datetime = QDate::currentDate(); //works ok
-    ui->textEdit->setText("Date: " + datetime.toString());
-    ui->textEdit->append("Subject: ");
+    startup();
 
 }
 
@@ -22,6 +20,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionNew_triggered()
 {
+    maybeSave();
     NewFile();
 }
 
@@ -99,3 +98,13 @@ void MainWindow::on_actionAbout_triggered()
                                        "\n Email: a7mad98.work@gmail.com\n Github Page Link: https://github.com/Ahmed-Al-Balochi");
 }
 
+
+void MainWindow::on_tabWidget_tabCloseRequested(int index)
+{
+    ui->tabWidget->removeTab(index);
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    ui->tabWidget->addTab(new QWidget(ui->textEdit),"New");
+}
