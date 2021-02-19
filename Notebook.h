@@ -11,6 +11,7 @@
 #include<QWidget>
 #include <QFileDialog>
 #include <QTextStream>
+#include<QTextEdit>
 #include <QMessageBox>
 #include <QPrinter>
 #include <QPrintDialog>
@@ -67,9 +68,7 @@ private slots:
 
     void on_actionAbout_triggered();
 
-    void on_tabWidget_tabCloseRequested(int index);
 
-    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -77,11 +76,9 @@ private:
     QString currentFile = "";
 
     bool modified;
+    bool maybeSave();
 
     QString fPath = "";
-    QFileSystemModel *dirmodel;
     QFileSystemModel *filemodel;
-
-    bool maybeSave();
 };
 #endif // MAINWINDOW_H
