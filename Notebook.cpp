@@ -152,3 +152,25 @@ void MainWindow::on_actionUnderline_triggered()
         ui->textEdit->setFontUnderline(underline);
     }
 }
+
+void MainWindow::on_actionColor_triggered()
+{
+    textColor();
+}
+
+/*
+void MainWindow::on_actionBold_triggered()
+{
+    ui->textEdit->underMouse();
+    if(!isbold){
+        isbold= true;
+        q.setBold(isbold);
+        ui->textEdit->setFont(q);
+    }
+    else{
+        isbold= false;
+        q.setBold(isbold);
+        ui->textEdit->setFont(q);
+    }
+}
+*/

@@ -7,6 +7,7 @@
 
 void MainWindow::FileStartup(){
 QDate datetime = QDate::currentDate(); //works ok
+ui->textEdit->setTextColor(myTextColor);
 ui->textEdit->setText("Date: " + datetime.toString());
 ui->textEdit->append("Subject: ");
 }
@@ -104,5 +105,14 @@ void MainWindow::closeEvent(QCloseEvent *event)
         filemodel->setRootPath(sPath);
         ui->treeView->setModel(filemodel);
         ui->treeView->setRootIndex(filemodel->index((sPath)));
+    }
+    void MainWindow::textColor()
+    {
+        // Store the chosen color from the dialog
+        QColor newColor = QColorDialog::getColor(getTextColor());
+
+        // If a valid color set it
+        if (newColor.isValid())
+            ui->textEdit->setTextColor(newColor);
     }
 

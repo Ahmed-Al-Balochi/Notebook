@@ -115,8 +115,10 @@
     <addaction name="actionRedo"/>
     <addaction name="actionZoom_in"/>
     <addaction name="actionZoom_Out"/>
+    <addaction name="actionBold"/>
     <addaction name="actionItailc"/>
     <addaction name="actionUnderline"/>
+    <addaction name="actionColor"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -299,6 +301,22 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+U</string>
+   </property>
+  </action>
+  <action name="actionColor">
+   <property name="text">
+    <string>Color</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+C</string>
+   </property>
+  </action>
+  <action name="actionBold">
+   <property name="text">
+    <string>Bold</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
    </property>
   </action>
  </widget>

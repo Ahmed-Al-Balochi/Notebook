@@ -34,6 +34,7 @@ public:
     ~MainWindow();
 
     bool isModified() const { return modified; }
+    QColor getTextColor() const { return myTextColor; }
 
 protected:
 
@@ -70,6 +71,8 @@ private slots:
     void PrintFile();
     void FilePath();
     void FileStartup();
+    void textColor();
+
 
     void on_tabWidget_tabCloseRequested(int index);
 
@@ -87,6 +90,10 @@ private slots:
 
     void on_actionUnderline_triggered();
 
+    void on_actionColor_triggered();
+
+    //void on_actionBold_triggered();
+
 private:
     Ui::MainWindow *ui;
     MainWindow *w;
@@ -103,7 +110,7 @@ private:
 
     //int myPenWidth = 5;
    // QColor myPenColor = Qt::blue;
-
+    QColor myTextColor = Qt::black;
     // Stores the image being drawn
 
     // Stores the location at the current mouse event
@@ -111,6 +118,7 @@ private:
 
     bool underline= false;
     bool italic = false;
+    //bool isbold = false;QFont q;
 
 };
 #endif // MAINWINDOW_H
