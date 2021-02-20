@@ -15,7 +15,9 @@
 #include <QMessageBox>
 #include <QPrinter>
 #include <QPrintDialog>
-
+#include<QImage>
+#include <QPoint>
+#include<QPixmap>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -69,7 +71,6 @@ private slots:
     void FilePath();
     void FileStartup();
 
-
     void on_tabWidget_tabCloseRequested(int index);
 
     //void on_pushButton_clicked();
@@ -80,11 +81,18 @@ private slots:
 
     void on_actionZoom_Out_triggered();
 
+    void on_actionStart_Painting_triggered();
+
+    void on_actionItailc_triggered();
+
+    void on_actionUnderline_triggered();
+
 private:
     Ui::MainWindow *ui;
     MainWindow *w;
     QString currentFile = "";
 
+    QImage image;
     QTextEdit *textFile;
     bool modified;
     bool maybeSave();
@@ -92,5 +100,17 @@ private:
 
     QString fPath = "";
     QFileSystemModel *filemodel;
+
+    //int myPenWidth = 5;
+   // QColor myPenColor = Qt::blue;
+
+    // Stores the image being drawn
+
+    // Stores the location at the current mouse event
+    //QPoint lastPoint;
+
+    bool underline= false;
+    bool italic = false;
+
 };
 #endif // MAINWINDOW_H

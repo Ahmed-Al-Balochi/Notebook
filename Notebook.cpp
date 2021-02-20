@@ -123,3 +123,32 @@ void MainWindow::on_tabWidget_tabBarDoubleClicked(int index)
     //ui->tabWidget->setCurrentWidget();
 }
 
+
+void MainWindow::on_actionStart_Painting_triggered()
+{
+   // ui->textEdit;
+}
+
+void MainWindow::on_actionItailc_triggered()
+{
+    if(!italic){
+        italic = true;
+        ui->textEdit->setFontItalic(italic);
+    }
+    else{
+         italic = false;
+        ui->textEdit->setFontItalic(italic);
+    }
+}
+
+void MainWindow::on_actionUnderline_triggered()
+{
+    if(!underline){
+        underline = true;
+        ui->textEdit->setFontUnderline(underline);
+    }
+    else{
+         underline = false;
+        ui->textEdit->setFontUnderline(underline);
+    }
+}

@@ -105,3 +105,4 @@ void MainWindow::closeEvent(QCloseEvent *event)
         ui->treeView->setModel(filemodel);
         ui->treeView->setRootIndex(filemodel->index((sPath)));
     }
+

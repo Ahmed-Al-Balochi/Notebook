@@ -115,6 +115,8 @@
     <addaction name="actionRedo"/>
     <addaction name="actionZoom_in"/>
     <addaction name="actionZoom_Out"/>
+    <addaction name="actionItailc"/>
+    <addaction name="actionUnderline"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -126,6 +128,7 @@
     <property name="title">
      <string>Paint</string>
     </property>
+    <addaction name="actionStart_Painting"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -272,6 +275,30 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+-</string>
+   </property>
+  </action>
+  <action name="actionStart_Painting">
+   <property name="text">
+    <string>Start Painting</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+P</string>
+   </property>
+  </action>
+  <action name="actionItailc">
+   <property name="text">
+    <string>Itailc</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionUnderline">
+   <property name="text">
+    <string>Underline</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+U</string>
    </property>
   </action>
  </widget>
