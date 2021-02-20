@@ -1,13 +1,17 @@
 #include "Notebook.h"
 #include "ui_Notebook.h"
+#include<QColorDialog>
+#include<QByteArray>
+#include<QInputDialog>
 
-void MainWindow::startup(){
+
+void MainWindow::FileStartup(){
 QDate datetime = QDate::currentDate(); //works ok
 ui->textEdit->setText("Date: " + datetime.toString());
 ui->textEdit->append("Subject: ");
 }
 
-void MainWindow::save(){
+void MainWindow::SaveFile(){
     QString filename = QFileDialog::getSaveFileName(this, "Save as");
     QFile file(filename);
     if(!file.open(QFile::WriteOnly | QFile::Text)){
@@ -43,7 +47,7 @@ void MainWindow::OpenFile(){
     file.close();
 }
 
-void MainWindow::Print(){
+void MainWindow::PrintFile(){
     QPrinter printer;
     printer.setPrinterName("Printer Name");
     QPrintDialog pDialog(&printer, this);
@@ -83,7 +87,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
            // If save button clicked call for file to be saved
             if (ret == QMessageBox::Save) {
-                 save();
+                 SaveFile();
 
             // If cancel do nothing
             } else if (ret == QMessageBox::Cancel) {
@@ -93,7 +97,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
         return true;
     }
 
-    void MainWindow::path(){
+    void MainWindow::FilePath(){
         QString sPath = QDir::homePath();
         filemodel = new QFileSystemModel(this);
         filemodel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs |QDir::Files); // make an option to backtrack

@@ -1,6 +1,6 @@
 #include "Notebook.h"
 #include "ui_Notebook.h"
-
+//#include<texttab.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -8,15 +8,15 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     //this->setCentralWidget(ui->textEdit);
-    path();
-    startup();
-
+    FilePath();
+    FileStartup();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
 
 void MainWindow::on_actionNew_triggered()
 {
@@ -31,12 +31,12 @@ void MainWindow::on_actionOpen_triggered()
 
 void MainWindow::on_actionSave_triggered()
 {
-    save();
+    SaveFile();
 }
 
 void MainWindow::on_actionPrint_triggered()
 {
-    Print();
+    PrintFile();
 }
 
 void MainWindow::on_actionExit_triggered()
@@ -96,5 +96,30 @@ void MainWindow::on_actionAbout_triggered()
 {
     QMessageBox::about(this, "About Notebook"," Thank You for Using my Notebook App!\n Author: Ahmed Al Balochi\n Student of Computer Science at Riphah International University"
                                        "\n Email: a7mad98.work@gmail.com\n Github Page Link: https://github.com/Ahmed-Al-Balochi");
+}
+
+
+void MainWindow::on_actionZoom_in_triggered()
+{
+    ui->textEdit->zoomIn(5);
+}
+
+void MainWindow::on_actionZoom_Out_triggered()
+{
+    ui->textEdit->zoomOut(5);
+}
+
+void MainWindow::on_tabWidget_tabCloseRequested(int index)
+{
+    ui->tabWidget->removeTab(index);
+}
+
+
+void MainWindow::on_tabWidget_tabBarDoubleClicked(int index)
+{
+    //index++;
+    ui->textEdit->setText(QString());
+    ui->tabWidget->insertTab(index,ui->textEdit,QString("Tab &").arg(ui->tabWidget->objectName()+ currentFile));
+    //ui->tabWidget->setCurrentWidget();
 }
 

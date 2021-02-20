@@ -16,9 +16,11 @@
 #include <QPrinter>
 #include <QPrintDialog>
 
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
 
 class MainWindow : public QMainWindow
 {
@@ -58,25 +60,35 @@ private slots:
 
 
     void on_treeView_clicked(const QModelIndex &index);
-
-    void save();
-    void NewFile();
-    void OpenFile();
-    void Print();
-    void path();
-    void startup();
-
     void on_actionAbout_triggered();
 
+    void SaveFile();
+    void NewFile();
+    void OpenFile();
+    void PrintFile();
+    void FilePath();
+    void FileStartup();
 
+
+    void on_tabWidget_tabCloseRequested(int index);
+
+    //void on_pushButton_clicked();
+
+    void on_tabWidget_tabBarDoubleClicked(int index);
+
+    void on_actionZoom_in_triggered();
+
+    void on_actionZoom_Out_triggered();
 
 private:
     Ui::MainWindow *ui;
     MainWindow *w;
     QString currentFile = "";
 
+    QTextEdit *textFile;
     bool modified;
     bool maybeSave();
+    int count = 0;
 
     QString fPath = "";
     QFileSystemModel *filemodel;
