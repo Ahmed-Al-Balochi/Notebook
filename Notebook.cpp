@@ -115,19 +115,6 @@ void MainWindow::on_tabWidget_tabCloseRequested(int index)
     ui->tabWidget->removeTab(index);
 }
 
-
-void MainWindow::on_tabWidget_tabBarDoubleClicked(int index)
-{
-    //index++;
-    //ui->textEdit->setText(QString());
-
-    ui->tabWidget->insertTab(index,(new MainWindow)->ui->textEdit,"new");
-
-    //ui->tabWidget->insertTab(index,ui->textEdit,QString("Tab &").arg(ui->tabWidget->objectName()+ currentFile));
-    //ui->tabWidget->setCurrentWidget();
-}
-
-
 void MainWindow::on_actionStart_Painting_triggered()
 {
    // ui->textEdit;
@@ -178,3 +165,15 @@ void MainWindow::on_actionBold_triggered()
     }
 }
 */
+
+void MainWindow::on_tabWidget_tabBarDoubleClicked(int index)
+{
+    //index++;
+    //ui->textEdit->setText(QString());
+
+    ui->tabWidget->insertTab(index,(new MainWindow())->ui->tab,"new");
+
+    //ui->tabWidget->insertTab(index,ui->textEdit,QString("Tab &").arg(ui->tabWidget->objectName()+ currentFile));
+    //ui->tabWidget->setCurrentWidget();
+}
+

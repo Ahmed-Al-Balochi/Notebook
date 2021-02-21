@@ -30,7 +30,6 @@ void MainWindow::SaveFile(){
 void MainWindow::NewFile(){
     currentFile.clear();
     ui->textEdit->setText(QString());
-    //ui->textEdit->setParent(ui->tab);
 }
 
 void MainWindow::OpenFile(){

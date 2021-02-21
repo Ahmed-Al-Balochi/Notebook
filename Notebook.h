@@ -41,6 +41,15 @@ protected:
    void closeEvent(QCloseEvent *event) override;
 
 private slots:
+
+   void SaveFile();
+   void NewFile();
+   void OpenFile();
+   void PrintFile();
+   void FilePath();
+   void FileStartup();
+   void textColor();
+
     void on_actionNew_triggered();
 
     void on_actionSave_triggered();
@@ -61,22 +70,10 @@ private slots:
 
     void on_actionRedo_triggered();
 
-
     void on_treeView_clicked(const QModelIndex &index);
     void on_actionAbout_triggered();
 
-    void SaveFile();
-    void NewFile();
-    void OpenFile();
-    void PrintFile();
-    void FilePath();
-    void FileStartup();
-    void textColor();
-
-
     void on_tabWidget_tabCloseRequested(int index);
-
-    //void on_pushButton_clicked();
 
     void on_tabWidget_tabBarDoubleClicked(int index);
 
