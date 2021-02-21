@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->textEdit->setParent(ui->tab);
     //this->setCentralWidget(ui->textEdit);
     FilePath();
     FileStartup();
@@ -118,8 +119,11 @@ void MainWindow::on_tabWidget_tabCloseRequested(int index)
 void MainWindow::on_tabWidget_tabBarDoubleClicked(int index)
 {
     //index++;
-    ui->textEdit->setText(QString());
-    ui->tabWidget->insertTab(index,ui->textEdit,QString("Tab &").arg(ui->tabWidget->objectName()+ currentFile));
+    //ui->textEdit->setText(QString());
+
+    ui->tabWidget->insertTab(index,(new MainWindow)->ui->textEdit,"new");
+
+    //ui->tabWidget->insertTab(index,ui->textEdit,QString("Tab &").arg(ui->tabWidget->objectName()+ currentFile));
     //ui->tabWidget->setCurrentWidget();
 }
 
