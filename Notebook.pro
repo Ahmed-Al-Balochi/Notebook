@@ -14,7 +14,8 @@ SOURCES += \
     main.cpp
 
 HEADERS += \
-    Notebook.h
+    Notebook.h \
+    resizeimage.h
 
 FORMS += \
     Notebook.ui

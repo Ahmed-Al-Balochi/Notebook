@@ -1,14 +1,14 @@
 #include "Notebook.h"
 #include "ui_Notebook.h"
-//#include<texttab.h>
+#include<resizeimage.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->textEdit->setParent(ui->tab);
-    //this->setCentralWidget(ui->textEdit);
+    //this->setCentralWidget(ui->textEdit);     ui->textEdit->setParent(ui->tab);
+
     FilePath();
     FileStartup();
 }
@@ -110,15 +110,6 @@ void MainWindow::on_actionZoom_Out_triggered()
     ui->textEdit->zoomOut(5);
 }
 
-void MainWindow::on_tabWidget_tabCloseRequested(int index)
-{
-    ui->tabWidget->removeTab(index);
-}
-
-void MainWindow::on_actionStart_Painting_triggered()
-{
-   // ui->textEdit;
-}
 
 void MainWindow::on_actionItailc_triggered()
 {
@@ -149,7 +140,12 @@ void MainWindow::on_actionColor_triggered()
     textColor();
 }
 
-/*
+/*          #### Still Trying to make it work
+void MainWindow::on_tabWidget_tabCloseRequested(int index)
+{
+    ui->tabWidget->removeTab(index);
+}
+
 void MainWindow::on_actionBold_triggered()
 {
     ui->textEdit->underMouse();
@@ -164,16 +160,67 @@ void MainWindow::on_actionBold_triggered()
         ui->textEdit->setFont(q);
     }
 }
-*/
+
 
 void MainWindow::on_tabWidget_tabBarDoubleClicked(int index)
 {
-    //index++;
-    //ui->textEdit->setText(QString());
-
-    ui->tabWidget->insertTab(index,(new MainWindow())->ui->tab,"new");
-
-    //ui->tabWidget->insertTab(index,ui->textEdit,QString("Tab &").arg(ui->tabWidget->objectName()+ currentFile));
-    //ui->tabWidget->setCurrentWidget();
+    ui->tabWidget->insertTab(index,(new MainWindow())->ui->tab,QString("index %1").arg(ui->tabWidget->currentIndex()));
+    //QMessageBox::warning(this,"Warning", &"Cannot open file: " [ ui->tabWidget->currentIndex()]);
 }
 
+
+void MainWindow::on_tabWidget_currentChanged(int index)
+{
+    //QMessageBox::warning(this,"Warning", &"Cannot open file: " [ ui->tabWidget->currentIndex()]);
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+     ui->tabWidget->addTab((new MainWindow())->ui->tab,QString("index %1").arg(ui->tabWidget->currentIndex()));
+}
+*/
+
+
+void MainWindow::on_actionStart_Painting_triggered()
+{
+        insertImage();
+}
+
+void MainWindow::on_actionResize_Image_triggered(){
+    QTextBlock currentBlock = ui->textEdit->textCursor().block();
+        QTextBlock::iterator it;
+
+        for (it = currentBlock.begin(); !(it.atEnd()); ++it)
+        {
+
+                 QTextFragment fragment = it.fragment();
+
+
+
+                 if (fragment.isValid())
+                 {
+
+                     if(fragment.charFormat().isImageFormat ())
+                     {
+                          QTextImageFormat newImageFormat = fragment.charFormat().toImageFormat();
+
+                          QPair<double, double> size = ResizeImageDialog::getNewSize(this, newImageFormat.width(), newImageFormat.height());
+
+                          newImageFormat.setWidth(size.first);
+                          newImageFormat.setHeight(size.second);
+
+                          if (newImageFormat.isValid())
+                          {
+                              //QMessageBox::about(this, "Fragment", fragment.text());
+                              //newImageFormat.setName(":/icons/text_bold.png");
+                              QTextCursor helper = ui->textEdit->textCursor();
+
+                              helper.setPosition(fragment.position());
+                              helper.setPosition(fragment.position() + fragment.length(),
+                                                  QTextCursor::KeepAnchor);
+                              helper.setCharFormat(newImageFormat);
+                          }
+                      }
+                  }
+           }
+}

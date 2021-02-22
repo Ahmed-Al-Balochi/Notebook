@@ -4,7 +4,6 @@
 #include<QByteArray>
 #include<QInputDialog>
 
-
 void MainWindow::FileStartup(){
 QDate datetime = QDate::currentDate(); //works ok
 ui->textEdit->setTextColor(myTextColor);
@@ -22,7 +21,7 @@ void MainWindow::SaveFile(){
     currentFile = filename;
     setWindowTitle(filename);
     QTextStream out(&file);
-    QString text = ui->textEdit->toPlainText();
+    QString text = ui->textEdit->toHtml();
     out<<text;
     file.close();
 }
@@ -116,3 +115,22 @@ void MainWindow::closeEvent(QCloseEvent *event)
             ui->textEdit->setTextColor(newColor);
     }
 
+    void MainWindow::insertImage()
+    {
+        QString file = QFileDialog::getOpenFileName(this, tr("Select an image"),
+                                      ".", tr("JPEG (*.jpg *jpeg)\n"
+                                        "GIF (*.gif)\n"
+                                        "Bitmap Files (*.bmp)\n"
+                                        "PNG (*.png)\n"));
+        QUrl Uri ( QString ( "file://%1" ).arg ( file ) );
+        image = QImageReader ( file ).read();
+
+        QTextDocument * textDocument = ui->textEdit->document();
+        textDocument->addResource( QTextDocument::ImageResource, Uri, QVariant ( image ) );
+        QTextCursor cursor = ui->textEdit->textCursor();
+        QTextImageFormat imageFormat;
+        imageFormat.setWidth( image.width() );
+        imageFormat.setHeight( image.height() );
+        imageFormat.setName( Uri.toString() );
+        cursor.insertImage(imageFormat);
+     }

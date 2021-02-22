@@ -17,7 +17,9 @@
 #include <QPrintDialog>
 #include<QImage>
 #include <QPoint>
+#include<QInputDialog>
 #include<QPixmap>
+#include<QLabel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -50,6 +52,9 @@ private slots:
    void FileStartup();
    void textColor();
 
+   void insertImage();
+   //void resizeImage();
+
     void on_actionNew_triggered();
 
     void on_actionSave_triggered();
@@ -73,10 +78,6 @@ private slots:
     void on_treeView_clicked(const QModelIndex &index);
     void on_actionAbout_triggered();
 
-    void on_tabWidget_tabCloseRequested(int index);
-
-    void on_tabWidget_tabBarDoubleClicked(int index);
-
     void on_actionZoom_in_triggered();
 
     void on_actionZoom_Out_triggered();
@@ -89,7 +90,19 @@ private slots:
 
     void on_actionColor_triggered();
 
+    /*void on_tabWidget_tabCloseRequested(int index);
+
+    void on_tabWidget_tabBarDoubleClicked(int index);
+
+    void on_tabWidget_tabBarClicked(int index);
+
+    void on_tabWidget_currentChanged(int index);
+
+    void on_pushButton_clicked();*/
+
     //void on_actionBold_triggered();
+
+    void on_actionResize_Image_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -112,10 +125,12 @@ private:
 
     // Stores the location at the current mouse event
     //QPoint lastPoint;
+    int previousTab = 0;
 
     bool underline= false;
     bool italic = false;
     //bool isbold = false;QFont q;
+
 
 };
 #endif // MAINWINDOW_H
