@@ -1,6 +1,5 @@
 #include "Notebook.h"
 #include "ui_Notebook.h"
-#include<resizeimage.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -113,26 +112,12 @@ void MainWindow::on_actionZoom_Out_triggered()
 
 void MainWindow::on_actionItailc_triggered()
 {
-    if(!italic){
-        italic = true;
-        ui->textEdit->setFontItalic(italic);
-    }
-    else{
-         italic = false;
-        ui->textEdit->setFontItalic(italic);
-    }
+   fontItalic();
 }
 
 void MainWindow::on_actionUnderline_triggered()
 {
-    if(!underline){
-        underline = true;
-        ui->textEdit->setFontUnderline(underline);
-    }
-    else{
-         underline = false;
-        ui->textEdit->setFontUnderline(underline);
-    }
+    fontUnderline();
 }
 
 void MainWindow::on_actionColor_triggered()
@@ -140,27 +125,17 @@ void MainWindow::on_actionColor_triggered()
     textColor();
 }
 
+
+void MainWindow::on_actionBold_triggered()
+{
+    fontBold();
+}
+
 /*          #### Still Trying to make it work
 void MainWindow::on_tabWidget_tabCloseRequested(int index)
 {
     ui->tabWidget->removeTab(index);
 }
-
-void MainWindow::on_actionBold_triggered()
-{
-    ui->textEdit->underMouse();
-    if(!isbold){
-        isbold= true;
-        q.setBold(isbold);
-        ui->textEdit->setFont(q);
-    }
-    else{
-        isbold= false;
-        q.setBold(isbold);
-        ui->textEdit->setFont(q);
-    }
-}
-
 
 void MainWindow::on_tabWidget_tabBarDoubleClicked(int index)
 {
@@ -187,40 +162,10 @@ void MainWindow::on_actionStart_Painting_triggered()
 }
 
 void MainWindow::on_actionResize_Image_triggered(){
-    QTextBlock currentBlock = ui->textEdit->textCursor().block();
-        QTextBlock::iterator it;
+   resizeImage();
+}
 
-        for (it = currentBlock.begin(); !(it.atEnd()); ++it)
-        {
-
-                 QTextFragment fragment = it.fragment();
-
-
-
-                 if (fragment.isValid())
-                 {
-
-                     if(fragment.charFormat().isImageFormat ())
-                     {
-                          QTextImageFormat newImageFormat = fragment.charFormat().toImageFormat();
-
-                          QPair<double, double> size = ResizeImageDialog::getNewSize(this, newImageFormat.width(), newImageFormat.height());
-
-                          newImageFormat.setWidth(size.first);
-                          newImageFormat.setHeight(size.second);
-
-                          if (newImageFormat.isValid())
-                          {
-                              //QMessageBox::about(this, "Fragment", fragment.text());
-                              //newImageFormat.setName(":/icons/text_bold.png");
-                              QTextCursor helper = ui->textEdit->textCursor();
-
-                              helper.setPosition(fragment.position());
-                              helper.setPosition(fragment.position() + fragment.length(),
-                                                  QTextCursor::KeepAnchor);
-                              helper.setCharFormat(newImageFormat);
-                          }
-                      }
-                  }
-           }
+void MainWindow::on_actionFont_Family_triggered()
+{
+     selectFont();
 }

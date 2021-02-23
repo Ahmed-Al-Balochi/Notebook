@@ -20,6 +20,10 @@
 #include<QInputDialog>
 #include<QPixmap>
 #include<QLabel>
+#include<QFontDialog>
+#include<QFontComboBox>
+#include<fakevim/fakevimhandler.h>
+#include<resizeimage.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -36,7 +40,7 @@ public:
     ~MainWindow();
 
     bool isModified() const { return modified; }
-    QColor getTextColor() const { return myTextColor; }
+    QColor getTextColor() const { return myFontColor; }
 
 protected:
 
@@ -52,8 +56,13 @@ private slots:
    void FileStartup();
    void textColor();
 
+   void selectFont();
+   void fontBold();
+   void fontItalic();
+   void fontUnderline();
+
    void insertImage();
-   //void resizeImage();
+   void resizeImage();
 
     void on_actionNew_triggered();
 
@@ -90,6 +99,12 @@ private slots:
 
     void on_actionColor_triggered();
 
+    void on_actionBold_triggered();
+
+    void on_actionResize_Image_triggered();
+
+    void on_actionFont_Family_triggered();
+
     /*void on_tabWidget_tabCloseRequested(int index);
 
     void on_tabWidget_tabBarDoubleClicked(int index);
@@ -100,36 +115,24 @@ private slots:
 
     void on_pushButton_clicked();*/
 
-    //void on_actionBold_triggered();
-
-    void on_actionResize_Image_triggered();
-
 private:
     Ui::MainWindow *ui;
     MainWindow *w;
     QString currentFile = "";
-
     QImage image;
     QTextEdit *textFile;
     bool modified;
-    bool maybeSave();
-    int count = 0;
 
     QString fPath = "";
     QFileSystemModel *filemodel;
 
-    //int myPenWidth = 5;
-   // QColor myPenColor = Qt::blue;
-    QColor myTextColor = Qt::black;
-    // Stores the image being drawn
-
-    // Stores the location at the current mouse event
-    //QPoint lastPoint;
-    int previousTab = 0;
+    QColor myFontColor = Qt::black;
 
     bool underline= false;
     bool italic = false;
-    //bool isbold = false;QFont q;
+    bool isbold = false;QFont q;
+
+    bool maybeSave();
 
 
 };

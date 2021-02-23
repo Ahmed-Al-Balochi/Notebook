@@ -6,7 +6,7 @@
 
 void MainWindow::FileStartup(){
 QDate datetime = QDate::currentDate(); //works ok
-ui->textEdit->setTextColor(myTextColor);
+ui->textEdit->setTextColor(myFontColor);
 ui->textEdit->setText("Date: " + datetime.toString());
 ui->textEdit->append("Subject: ");
 }
@@ -134,3 +134,93 @@ void MainWindow::closeEvent(QCloseEvent *event)
         imageFormat.setName( Uri.toString() );
         cursor.insertImage(imageFormat);
      }
+
+    void MainWindow::selectFont()
+    {
+        bool fontSelected;
+        QFont font = QFontDialog::getFont(&fontSelected, this);
+        if (fontSelected)
+            ui->textEdit->setFont(font);
+    }
+
+
+    void MainWindow::fontBold(){
+        QTextCharFormat format;
+       // cursor.mergeCharFormat(format);
+
+        ui->textEdit->underMouse();
+        if(!isbold){
+            isbold= true;
+            format.setFontWeight(QFont::Bold);
+           QTextCursor cursor = ui->textEdit->textCursor();
+           cursor.mergeCharFormat(format);//do the text as Bold
+        }
+        else{
+            isbold= false;
+            format.setFontWeight(QFont::Normal);
+           QTextCursor cursor = ui->textEdit->textCursor();
+           cursor.mergeCharFormat(format);//do the text as Bold
+        }
+    }
+
+void MainWindow::fontItalic(){
+    if(!italic){
+        italic = true;
+        ui->textEdit->setFontItalic(italic);
+    }
+    else{
+         italic = false;
+        ui->textEdit->setFontItalic(italic);
+    }
+}
+
+void MainWindow::fontUnderline()
+{
+    if(!underline){
+        underline = true;
+        ui->textEdit->setFontUnderline(underline);
+    }
+    else{
+         underline = false;
+        ui->textEdit->setFontUnderline(underline);
+    }
+}
+
+void MainWindow::resizeImage(){
+    QTextBlock currentBlock = ui->textEdit->textCursor().block();
+        QTextBlock::iterator it;
+
+        for (it = currentBlock.begin(); !(it.atEnd()); ++it)
+        {
+
+                 QTextFragment fragment = it.fragment();
+
+
+
+                 if (fragment.isValid())
+                 {
+
+                     if(fragment.charFormat().isImageFormat ())
+                     {
+                          QTextImageFormat newImageFormat = fragment.charFormat().toImageFormat();
+
+                          QPair<double, double> size = ResizeImageDialog::getNewSize(this, newImageFormat.width(), newImageFormat.height());
+
+                          newImageFormat.setWidth(size.first);
+                          newImageFormat.setHeight(size.second);
+
+                          if (newImageFormat.isValid())
+                          {
+                              //QMessageBox::about(this, "Fragment", fragment.text());
+                              //newImageFormat.setName(":/icons/text_bold.png");
+                              QTextCursor helper = ui->textEdit->textCursor();
+
+                              helper.setPosition(fragment.position());
+                              helper.setPosition(fragment.position() + fragment.length(),
+                                                  QTextCursor::KeepAnchor);
+                              helper.setCharFormat(newImageFormat);
+                          }
+                      }
+                  }
+           }
+}

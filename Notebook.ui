@@ -93,6 +93,7 @@
     <addaction name="actionItailc"/>
     <addaction name="actionUnderline"/>
     <addaction name="actionColor"/>
+    <addaction name="actionFont_Family"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -300,6 +301,11 @@
   <action name="actionResize_Image">
    <property name="text">
     <string>Resize Image</string>
+   </property>
+  </action>
+  <action name="actionFont_Family">
+   <property name="text">
+    <string>Font Family</string>
    </property>
   </action>
  </widget>
