@@ -24,11 +24,14 @@
 #include<QFontComboBox>
 #include<fakevim/fakevimhandler.h>
 #include<resizeimage.h>
+#include<paint.h>
+#include<dialog.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+class ScribbleArea;
 
 class MainWindow : public QMainWindow
 {
@@ -61,8 +64,11 @@ private slots:
    void fontItalic();
    void fontUnderline();
 
+   //void paint();
+
    void insertImage();
    void resizeImage();
+   void getPaint(QString);
 
     void on_actionNew_triggered();
 
@@ -115,11 +121,16 @@ private slots:
 
     void on_pushButton_clicked();*/
 
+    void on_actionStart_Painting_2_triggered();
+
+    void on_actionEnd_Painting_triggered();
+
 private:
     Ui::MainWindow *ui;
     MainWindow *w;
+
     QString currentFile = "";
-    QImage image;
+    QImage Textimage;
     QTextEdit *textFile;
     bool modified;
 
@@ -134,6 +145,6 @@ private:
 
     bool maybeSave();
 
-
+    ScribbleArea *scribbleArea;
 };
 #endif // MAINWINDOW_H

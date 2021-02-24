@@ -11,10 +11,12 @@ CONFIG += c++11
 SOURCES += \
     Functions.cpp \
     Notebook.cpp \
-    main.cpp
+    main.cpp \
+    paint.cpp
 
 HEADERS += \
     Notebook.h \
+    paint.h \
     resizeimage.h
 
 FORMS += \

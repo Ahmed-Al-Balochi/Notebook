@@ -123,15 +123,30 @@ void MainWindow::closeEvent(QCloseEvent *event)
                                         "Bitmap Files (*.bmp)\n"
                                         "PNG (*.png)\n"));
         QUrl Uri ( QString ( "file://%1" ).arg ( file ) );
-        image = QImageReader ( file ).read();
+        Textimage = QImageReader ( file ).read();
 
         QTextDocument * textDocument = ui->textEdit->document();
-        textDocument->addResource( QTextDocument::ImageResource, Uri, QVariant ( image ) );
+        textDocument->addResource( QTextDocument::ImageResource, Uri, QVariant ( Textimage ) );
         QTextCursor cursor = ui->textEdit->textCursor();
         QTextImageFormat imageFormat;
-        imageFormat.setWidth( image.width() );
-        imageFormat.setHeight( image.height() );
+        imageFormat.setWidth( Textimage.width() );
+        imageFormat.setHeight( Textimage.height() );
         imageFormat.setName( Uri.toString() );
+        cursor.insertImage(imageFormat);
+     }
+
+    void MainWindow::getPaint(QString filename)
+    {
+
+        Textimage = QImageReader ( filename ).read();
+
+        //QTextDocument * textDocument = ui->textEdit->document();
+        //textDocument->addResource( QTextDocument::ImageResource, Uri, QVariant ( Textimage ) );
+        QTextCursor cursor = ui->textEdit->textCursor();
+        QTextImageFormat imageFormat;
+        imageFormat.setWidth( Textimage.width() );
+        imageFormat.setHeight( Textimage.height() );
+        imageFormat.setName( filename );
         cursor.insertImage(imageFormat);
      }
 

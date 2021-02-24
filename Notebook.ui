@@ -108,10 +108,18 @@
     <addaction name="actionStart_Painting"/>
     <addaction name="actionResize_Image"/>
    </widget>
+   <widget class="QMenu" name="menuPaint_2">
+    <property name="title">
+     <string>Paint</string>
+    </property>
+    <addaction name="actionStart_Painting_2"/>
+    <addaction name="actionEnd_Painting"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuPaint"/>
    <addaction name="menuHelp"/>
+   <addaction name="menuPaint_2"/>
   </widget>
   <widget class="QToolBar" name="toolBar">
    <property name="windowTitle">
@@ -306,6 +314,16 @@
   <action name="actionFont_Family">
    <property name="text">
     <string>Font Family</string>
+   </property>
+  </action>
+  <action name="actionStart_Painting_2">
+   <property name="text">
+    <string>Start Painting</string>
+   </property>
+  </action>
+  <action name="actionEnd_Painting">
+   <property name="text">
+    <string>End Painting</string>
    </property>
   </action>
  </widget>
