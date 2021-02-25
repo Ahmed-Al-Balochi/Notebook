@@ -131,7 +131,33 @@ void MainWindow::on_actionBold_triggered()
     fontBold();
 }
 
-/*          #### Still Trying to make it work
+
+void MainWindow::on_actionResize_Image_triggered(){
+   resizeImage();
+}
+
+void MainWindow::on_actionFont_Family_triggered()
+{
+     selectFont();
+}
+
+void MainWindow::on_actionStart_Painting_triggered()
+{
+    scribbleArea = new ScribbleArea;
+    scribbleArea->setVisible(isVisible());
+}
+
+void MainWindow::on_actionEnd_Painting_triggered()
+{
+    EndPainting();
+}
+
+void MainWindow::on_actionInsertImage_triggered()
+{
+    insertImage();
+}
+
+/*          #### Still Trying to make tabs work
 void MainWindow::on_tabWidget_tabCloseRequested(int index)
 {
     ui->tabWidget->removeTab(index);
@@ -154,54 +180,3 @@ void MainWindow::on_pushButton_clicked()
      ui->tabWidget->addTab((new MainWindow())->ui->tab,QString("index %1").arg(ui->tabWidget->currentIndex()));
 }
 */
-
-
-void MainWindow::on_actionStart_Painting_triggered()
-{
-        insertImage();
-}
-
-void MainWindow::on_actionResize_Image_triggered(){
-   resizeImage();
-}
-
-void MainWindow::on_actionFont_Family_triggered()
-{
-     selectFont();
-}
-
-void MainWindow::on_actionStart_Painting_2_triggered()
-{
-    scribbleArea = new ScribbleArea;
-   // scribbleArea->setParent(this);
-    scribbleArea->setVisible(isVisible());
-}
-
-void MainWindow::on_actionEnd_Painting_triggered()
-{
-    const QByteArray fileFormat;
-    // Define path, name and default file type
-    QString initialPath = QDir::currentPath() + "/untitled." + fileFormat;
-
-    // Get selected file from dialog
-    // Add the proper file formats and extensions
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),
-                               initialPath,
-                               tr("%1 Files (*.%2);;All Files (*)")
-                               .arg(QString::fromLatin1(fileFormat.toUpper()))
-                               .arg(QString::fromLatin1(fileFormat)));
-
-    // If no file do nothing
-    if (fileName.isEmpty()) {
-        QMessageBox::warning(this,"Warning", "Cannot Save Image: ");
-    } else {
-
-        // Call for the file to be saved
-        scribbleArea->saveImage(fileName, fileFormat.constData());
-}
-    //scribbleArea->setParent(this);
-    //Textimage = scribbleArea->saveImage(currentFile, fileFormat.constData());
-    Textimage = scribbleArea->image;
-    getPaint(fileName);
-    scribbleArea->setVisible(!isVisible());
-}

@@ -10,5 +10,24 @@
         <file>Images/Icons/Icons/right-arrow.png</file>
         <file>Images/Icons/Icons/save-file.png</file>
         <file>Images/Icons/Icons/scissors.png</file>
+        <file>Icons/bold.png</file>
+        <file>Icons/clipboard-paste-option.png</file>
+        <file>Icons/copy.png</file>
+        <file>Icons/font.png</file>
+        <file>Icons/insert-picture-icon.png</file>
+        <file>Icons/italic.png</file>
+        <file>Icons/left-arrow.png</file>
+        <file>Icons/new.png</file>
+        <file>Icons/notes.png</file>
+        <file>Icons/open.png</file>
+        <file>Icons/paint-palette.png</file>
+        <file>Icons/printer.png</file>
+        <file>Icons/reduce.png</file>
+        <file>Icons/right-arrow.png</file>
+        <file>Icons/save-file.png</file>
+        <file>Icons/scissors.png</file>
+        <file>Icons/underline.png</file>
+        <file>Icons/zoom-in.png</file>
+        <file>Icons/zoom-out.png</file>
     </qresource>
 </RCC>

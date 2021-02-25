@@ -135,18 +135,16 @@ void MainWindow::closeEvent(QCloseEvent *event)
         cursor.insertImage(imageFormat);
      }
 
-    void MainWindow::getPaint(QString filename)
+    void MainWindow::getPaint(QString filepath)
     {
 
-        Textimage = QImageReader ( filename ).read();
+        Textimage = QImageReader ( filepath ).read();
 
-        //QTextDocument * textDocument = ui->textEdit->document();
-        //textDocument->addResource( QTextDocument::ImageResource, Uri, QVariant ( Textimage ) );
         QTextCursor cursor = ui->textEdit->textCursor();
         QTextImageFormat imageFormat;
         imageFormat.setWidth( Textimage.width() );
         imageFormat.setHeight( Textimage.height() );
-        imageFormat.setName( filename );
+        imageFormat.setName( filepath );
         cursor.insertImage(imageFormat);
      }
 
@@ -238,4 +236,34 @@ void MainWindow::resizeImage(){
                       }
                   }
            }
+}
+
+
+void MainWindow::EndPainting()
+{
+    const QByteArray fileFormat;
+    // Define path, name and default file type
+    QString initialPath = QDir::currentPath() + "/untitled." + fileFormat;
+
+    // Get selected file from dialog
+    // Add the proper file formats and extensions
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),
+                               initialPath,
+                               tr("%1 Files (*.%2);;All Files (*)")
+                               .arg(QString::fromLatin1(fileFormat.toUpper()))
+                               .arg(QString::fromLatin1(fileFormat)));
+
+    // If no file do nothing
+    if (fileName.isEmpty()) {
+        QMessageBox::warning(this,"Warning", "Cannot Save Image: ");
+    } else {
+
+        // Call for the file to be saved
+        scribbleArea->saveImage(fileName, fileFormat.constData());
+}
+    //scribbleArea->setParent(this);
+    //Textimage = scribbleArea->saveImage(currentFile, fileFormat.constData());
+    Textimage = scribbleArea->image;
+    getPaint(fileName);
+    scribbleArea->setVisible(!isVisible());
 }

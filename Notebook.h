@@ -25,7 +25,6 @@
 #include<fakevim/fakevimhandler.h>
 #include<resizeimage.h>
 #include<paint.h>
-#include<dialog.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -38,7 +37,6 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    //explicit MainWindow(const QString &fileName, QWidget *parent = nullptr);
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
@@ -64,11 +62,11 @@ private slots:
    void fontItalic();
    void fontUnderline();
 
-   //void paint();
-
    void insertImage();
    void resizeImage();
-   void getPaint(QString);
+
+   void EndPainting();
+   void getPaint(QString filepath);
 
     void on_actionNew_triggered();
 
@@ -97,8 +95,6 @@ private slots:
 
     void on_actionZoom_Out_triggered();
 
-    void on_actionStart_Painting_triggered();
-
     void on_actionItailc_triggered();
 
     void on_actionUnderline_triggered();
@@ -111,6 +107,12 @@ private slots:
 
     void on_actionFont_Family_triggered();
 
+    void on_actionStart_Painting_triggered();
+
+    void on_actionEnd_Painting_triggered();
+
+    void on_actionInsertImage_triggered();
+
     /*void on_tabWidget_tabCloseRequested(int index);
 
     void on_tabWidget_tabBarDoubleClicked(int index);
@@ -120,10 +122,6 @@ private slots:
     void on_tabWidget_currentChanged(int index);
 
     void on_pushButton_clicked();*/
-
-    void on_actionStart_Painting_2_triggered();
-
-    void on_actionEnd_Painting_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -141,10 +139,11 @@ private:
 
     bool underline= false;
     bool italic = false;
-    bool isbold = false;QFont q;
-
-    bool maybeSave();
+    bool isbold = false;
+    QFont q;
 
     ScribbleArea *scribbleArea;
+
+    bool maybeSave();
 };
 #endif // MAINWINDOW_H

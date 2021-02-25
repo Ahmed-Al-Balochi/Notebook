@@ -105,21 +105,21 @@
     <property name="title">
      <string>Image</string>
     </property>
-    <addaction name="actionStart_Painting"/>
+    <addaction name="actionInsertImage"/>
     <addaction name="actionResize_Image"/>
    </widget>
    <widget class="QMenu" name="menuPaint_2">
     <property name="title">
      <string>Paint</string>
     </property>
-    <addaction name="actionStart_Painting_2"/>
+    <addaction name="actionStart_Painting"/>
     <addaction name="actionEnd_Painting"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuPaint"/>
-   <addaction name="menuHelp"/>
    <addaction name="menuPaint_2"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QToolBar" name="toolBar">
    <property name="windowTitle">
@@ -141,6 +141,19 @@
    <addaction name="actionCopy"/>
    <addaction name="actionCut"/>
    <addaction name="actionPaste"/>
+   <addaction name="separator"/>
+   <addaction name="actionZoom_in"/>
+   <addaction name="actionZoom_Out"/>
+   <addaction name="separator"/>
+   <addaction name="actionFont_Family"/>
+   <addaction name="actionBold"/>
+   <addaction name="actionItailc"/>
+   <addaction name="actionUnderline"/>
+   <addaction name="separator"/>
+   <addaction name="actionInsertImage"/>
+   <addaction name="actionResize_Image"/>
+   <addaction name="separator"/>
+   <addaction name="actionStart_Painting"/>
    <addaction name="separator"/>
    <addaction name="actionPrint"/>
   </widget>
@@ -251,6 +264,10 @@
    </property>
   </action>
   <action name="actionZoom_in">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Images/Icons/zoom-in.png</normaloff>:/Images/Icons/zoom-in.png</iconset>
+   </property>
    <property name="text">
     <string>Zoom in</string>
    </property>
@@ -259,6 +276,10 @@
    </property>
   </action>
   <action name="actionZoom_Out">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Images/Icons/zoom-out.png</normaloff>:/Images/Icons/zoom-out.png</iconset>
+   </property>
    <property name="text">
     <string>Zoom Out</string>
    </property>
@@ -266,7 +287,11 @@
     <string>Ctrl+-</string>
    </property>
   </action>
-  <action name="actionStart_Painting">
+  <action name="actionInsertImage">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Images/Icons/insert-picture-icon.png</normaloff>:/Images/Icons/insert-picture-icon.png</iconset>
+   </property>
    <property name="text">
     <string>Insert Image</string>
    </property>
@@ -275,6 +300,10 @@
    </property>
   </action>
   <action name="actionItailc">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Images/Icons/italic.png</normaloff>:/Images/Icons/italic.png</iconset>
+   </property>
    <property name="text">
     <string>Itailc</string>
    </property>
@@ -283,6 +312,10 @@
    </property>
   </action>
   <action name="actionUnderline">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Images/Icons/underline.png</normaloff>:/Images/Icons/underline.png</iconset>
+   </property>
    <property name="text">
     <string>Underline</string>
    </property>
@@ -299,6 +332,10 @@
    </property>
   </action>
   <action name="actionBold">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Images/Icons/bold.png</normaloff>:/Images/Icons/bold.png</iconset>
+   </property>
    <property name="text">
     <string>Bold</string>
    </property>
@@ -307,16 +344,29 @@
    </property>
   </action>
   <action name="actionResize_Image">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Images/Icons/reduce.png</normaloff>:/Images/Icons/reduce.png</iconset>
+   </property>
    <property name="text">
     <string>Resize Image</string>
    </property>
   </action>
   <action name="actionFont_Family">
+   <property name="icon">
+    <iconset>
+     <normalon>:/Images/Icons/font.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Font Family</string>
    </property>
   </action>
-  <action name="actionStart_Painting_2">
+  <action name="actionStart_Painting">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Images/Icons/paint-palette.png</normaloff>:/Images/Icons/paint-palette.png</iconset>
+   </property>
    <property name="text">
     <string>Start Painting</string>
    </property>
