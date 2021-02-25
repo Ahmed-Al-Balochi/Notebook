@@ -10,10 +10,8 @@
         <file>Images/Icons/Icons/right-arrow.png</file>
         <file>Images/Icons/Icons/save-file.png</file>
         <file>Images/Icons/Icons/scissors.png</file>
-        <file>Icons/bold.png</file>
         <file>Icons/clipboard-paste-option.png</file>
         <file>Icons/copy.png</file>
-        <file>Icons/font.png</file>
         <file>Icons/insert-picture-icon.png</file>
         <file>Icons/italic.png</file>
         <file>Icons/left-arrow.png</file>
@@ -29,5 +27,8 @@
         <file>Icons/underline.png</file>
         <file>Icons/zoom-in.png</file>
         <file>Icons/zoom-out.png</file>
+        <file>Icons/color-circle.png</file>
+        <file>Icons/font.png</file>
+        <file>Icons/bold.png</file>
     </qresource>
 </RCC>

@@ -147,8 +147,9 @@
    <addaction name="separator"/>
    <addaction name="actionFont_Family"/>
    <addaction name="actionBold"/>
-   <addaction name="actionItailc"/>
    <addaction name="actionUnderline"/>
+   <addaction name="actionItailc"/>
+   <addaction name="actionColor"/>
    <addaction name="separator"/>
    <addaction name="actionInsertImage"/>
    <addaction name="actionResize_Image"/>
@@ -324,6 +325,10 @@
    </property>
   </action>
   <action name="actionColor">
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Images/Icons/color-circle.png</normaloff>:/Images/Icons/color-circle.png</iconset>
+   </property>
    <property name="text">
     <string>Color</string>
    </property>
